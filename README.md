@@ -49,14 +49,14 @@ catkin_make
 roscore
 ```
 ```
+rosparam set use_sim_time true
+rosbag play xxx.bag --clock
+```
+```
 rosbag record -O synced.bag /sync/img /sync/lidar /livox/imu
 ```
 ```
 cd /systime_ws
 source devel/setup.bash
 rosrun sys_time main.cpp
-```
-```
-rosparam set use_sim_time true
-rosbag play xxx.bag --clock
 ```

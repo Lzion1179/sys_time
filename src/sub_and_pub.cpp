@@ -10,9 +10,8 @@ subscriberANDpublisher::subscriberANDpublisher()
     // 参数 10 是缓冲区大小，可以根据数据频率调整
     sync_.reset(new message_filters::Synchronizer<syncpolicy>(syncpolicy(10), camera_sub, lidar_sub));
     sync_->registerCallback(boost::bind(&subscriberANDpublisher::callback, this, _1, _2));
-
-    camera_pub = nh.advertise<sensor_msgs::Image>("sync/img", 10);
-    lidar_pub = nh.advertise<livox_ros_driver2::CustomMsg>("sync/lidar", 10);
+    camera_pub = nh.advertise<sensor_msgs::Image>("sync/img", 100);
+    lidar_pub = nh.advertise<livox_ros_driver2::CustomMsg>("sync/lidar", 100);
 }
 
 // 修改回调函数实现
